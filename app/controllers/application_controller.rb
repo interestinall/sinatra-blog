@@ -1,4 +1,5 @@
 require './config/environment'
+require 'haml'
 
 class ApplicationController < Sinatra::Base
 
