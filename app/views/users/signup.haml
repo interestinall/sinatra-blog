@@ -1,1 +1,16 @@
 %h1 Create an Account
+
+%form{action: "/signup", method: "post"}
+  %label{for: "username"} Username:
+  %input{type: "text", name: "user[username]"}
+
+  %label{for: "email"} Email:
+  %input{type: "text", name: "user[email]"}
+  %br
+  %br
+  %label{for: "password"} Password:
+  %input{type: "text", name: "user[password]"}
+  %br
+  %br
+  %input{type: "submit", name: "submit"}
+
