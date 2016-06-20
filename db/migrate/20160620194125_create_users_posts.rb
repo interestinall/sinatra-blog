@@ -9,6 +9,7 @@ class CreateUsersPosts < ActiveRecord::Migration
 
     create_table :posts do |t|
       t.text :content
+      t.string :title
       t.integer :user_id
     end
   end
