@@ -1,8 +1,6 @@
-require_relative "spec_helper"
+require "spec_helper"
 
-def app
-  ApplicationController
-end
+
 
 describe ApplicationController do
   it "loads right templete for index" do
