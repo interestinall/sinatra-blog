@@ -7,9 +7,7 @@ describe UserController do
   it 'loads signup page' do 
     get '/signup'
     expect(last_response.status).to eq(200)
-
   end
-
 
   it 'saves new user' do   
     visit '/signup' 
@@ -17,7 +15,6 @@ describe UserController do
     fill_in("user[password]", :with => "joneezzz")
     fill_in("user[email]", :with => "mike@jonez.com")
     click_button 'submit'
-    
     expect(User.count).to eq(1)  
   end 
 
@@ -33,7 +30,6 @@ describe UserController do
   it 'loads login page' do 
     get '/login'
     expect(last_response.status).to eq(200)
-
   end
 
 end

@@ -27,7 +27,7 @@ class UserController < ApplicationController
       haml :'users/login'
     else 
       #TODO redirect somehwere better, maybe a list of their post titles
-      redirect '/'
+      redirect '/posts/new'
     end
   end
 
@@ -35,6 +35,7 @@ class UserController < ApplicationController
     user = User.find_by(username: params[:user][:username])
     if user && user.authenticate(params[:user][:password])
       session[:id] = user.id
+      binding.pry
       redirect "/users/#{user.id}"
     else
       redirect 'signup'

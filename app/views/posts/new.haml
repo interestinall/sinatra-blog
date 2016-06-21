@@ -1,0 +1,12 @@
+%h1 Write a New Blog Post
+
+%form{action: "/posts", method: "post"}
+  %label{for: "title"} Title:
+  %input{type: "text", name: "post[title]"}
+  %br
+  %br
+  %label{for: "content"} Content:
+  %input{type: "textarea", name: "post[content]"}
+  %br
+  %br
+  %input{type: "submit", value: "submit"}
