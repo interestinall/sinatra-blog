@@ -20,4 +20,19 @@ class PostController < ApplicationController
     haml :'posts/show'
   end
 
+  get '/:username/posts' do 
+    @user = User.find_by(username: params[:username])
+    if session[:id] == @user.id
+      @posts = @user.posts
+      haml :'posts/index'
+    else
+      redirect '/login'
+    end
+
+  end
+
+
+
+
+
 end
