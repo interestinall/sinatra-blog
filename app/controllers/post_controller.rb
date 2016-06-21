@@ -69,6 +69,14 @@ class PostController < ApplicationController
 
   end
 
+  post '/:username/posts/:id/comment' do 
+    user = User.find(session[:id])
+    @comment = Comment.create(content: params[:comment], user_id: user.id, post_id: params[:id] )
+    redirect "#{params[:username]}/posts/#{params[:id]}"
+    # binding.pry
+
+  end
+
 
 
 
