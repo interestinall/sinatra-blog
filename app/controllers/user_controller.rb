@@ -2,13 +2,18 @@ class UserController < ApplicationController
 
 
   get '/signup' do 
-    haml :'users/signup'
+    if !session[:id]
+      haml :'users/signup'
+    end
   end
 
   post '/signup' do 
     @user = User.new(params[:user])
     if @user.save
+      session[:id] = @user.id 
       redirect "/users/#{@user.id}"
+    else 
+      redirect '/signup'
     end
   end
 
@@ -21,7 +26,7 @@ class UserController < ApplicationController
     if !session[:id]
       haml :'users/login'
     else 
-      #TODO redirect somehwere better
+      #TODO redirect somehwere better, maybe a list of their post titles
       redirect '/'
     end
   end
