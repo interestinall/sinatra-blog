@@ -4,5 +4,9 @@
 %p #{@post.content}
 
 %a{href: "/#{@user.username}/posts"} index
-%a{href: "/#{@user.username}/#{@post.id}/edit"} edit   
-%a{href: "/#{@user.username}/#{@post.id}/delete"} delete
+%a{href: "/#{@user.username}/posts/#{@post.id}/edit"} edit   
+%form{action: "/#{@user.username}/posts/#{@post.id}/delete", method: "post", style: "display:inline"}
+  %input{type: "hidden", name: "_method", value: "delete"}
+  %input{type: "submit", value: "delete post"}
+
+

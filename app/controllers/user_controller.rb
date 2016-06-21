@@ -42,6 +42,7 @@ class UserController < ApplicationController
   end
 
   get '/logout' do 
+    binding.pry
     if !session[:id].nil?
       session.destroy
     end
