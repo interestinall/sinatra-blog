@@ -22,6 +22,7 @@ class PostController < ApplicationController
   get '/:username/posts/:id' do 
     @post = Post.find(params[:id])
     @user = User.find(@post.user_id)
+    @session = session
     haml :'posts/show'
 
   end
