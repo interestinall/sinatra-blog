@@ -34,8 +34,7 @@ class UserController < ApplicationController
   post '/login' do 
     user = User.find_by(username: params[:user][:username])
     if user && user.authenticate(params[:user][:password])
-      session[:id] = user.id
-      binding.pry
+      session[:id] = user.id 
       redirect "/users/#{user.id}"
     else
       redirect 'signup'
