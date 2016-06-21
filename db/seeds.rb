@@ -25,3 +25,20 @@ Post.create(title: "My first post", content: text , user_id: 3)
 Post.create(title: "My second post", content: text , user_id: 3)
 Post.create(title: "10 reasons to click this bait", content: text , user_id: 3)
 Post.create(title: "OMG Panic!!!", content: text , user_id: 3)
+
+x = 1
+
+12.times do
+
+  Comment.create(content: "you're right", user_id: 1, post_id: x)
+  Comment.create(content: "you're wrong", user_id: 2, post_id: x)
+  Comment.create(content: "i'm right", user_id: 1, post_id: x)
+  Comment.create(content: "you're wrong", user_id: 2, post_id: x) 
+
+  x += 1
+
+end
+
+
+
+
