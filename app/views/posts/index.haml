@@ -1,0 +1,5 @@
+%h1 Index
+
+- @posts.each do |p|
+    %a{href: "/#{@user.username}/posts/#{p.id}"} #{p.title}
+    %br

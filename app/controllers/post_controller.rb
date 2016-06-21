@@ -21,4 +21,37 @@ class PostController < ApplicationController
 
   end
 
+  get '/:username/posts' do 
+    @user = User.find_by(username: params[:username])
+    if session[:id] == @user.id
+      @posts = @user.posts
+      haml :'posts/index'
+    else
+      redirect '/login'
+    end
+  end
+
+  get '/:username/posts/:id/edit' do 
+    @post = Post.find(params[:id])
+    @user = User.find(@post.user_id)
+    haml :'posts/edit'
+  end
+
+  post '/:username/posts/:id'  do 
+    post = Post.find(params[:id])
+    post.update(title: params[:post][:title], content: params[:post][:content])
+    redirect "#{params[:username]}/posts/#{post.id}"
+  end
+
+
+
+
+
+
+
+
+
+
+
+
 end
