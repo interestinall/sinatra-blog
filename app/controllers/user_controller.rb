@@ -30,7 +30,8 @@ class UserController < ApplicationController
       haml :'users/login'
     else 
       #TODO redirect somehwere better, maybe a list of their post titles
-      redirect '/posts/new'
+      user = User.find(session[:id])
+      redirect "/#{user.username}/posts"
     end
   end
 
