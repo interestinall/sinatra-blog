@@ -42,9 +42,21 @@ class PostController < ApplicationController
     redirect "#{params[:username]}/posts/#{post.id}"
   end
 
+  post '/:username/posts/:id/delete' do 
+    if session[:id]
+      post = Post.find(params[:id])
+      user = User.find(post.user_id)
+      if session[:id] = user.id
+        post.delete
+        redirect "#{user.username}/posts"
+      else
+        redirect '/login'
+      end
+    else
+      redirect '/login'
+    end
 
-
-
+  end
 
 
 
