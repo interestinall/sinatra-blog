@@ -10,9 +10,9 @@ class PostController < ApplicationController
 
   post '/posts' do 
     user = User.find(session[:id])
-    @post = Post.create(title: params[:post][:title], content: params[:post][:contnet], user_id: user.id)
+    post = Post.create(title: params[:post][:title], content: params[:post][:content], user_id: user.id)
     binding.pry
-    redirect 'user/posts/#{@post.id}'
+    redirect "#{user.username}/posts/#{post.id}"
   end
 
 end
