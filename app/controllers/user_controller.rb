@@ -41,4 +41,12 @@ class UserController < ApplicationController
     end
   end
 
+  get '/logout' do 
+    if !session[:id].nil?
+      session.destory
+    end
+    redirect '/'
+  end
+    
+
 end
