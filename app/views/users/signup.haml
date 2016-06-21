@@ -1,5 +1,11 @@
 %h1 Create an Account
 
+- if flash.has?(:message)
+  =flash[:message]
+  
+%br
+%br
+
 %form{action: "/signup", method: "post"}
   %label{for: "username"} Username:
   %input{type: "text", name: "user[username]"}

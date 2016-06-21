@@ -1,5 +1,7 @@
-class UserController < ApplicationController
+require 'rack-flash'
 
+class UserController < ApplicationController
+  use Rack::Flash
 
   get '/signup' do 
     if !session[:id]
@@ -13,6 +15,7 @@ class UserController < ApplicationController
       session[:id] = @user.id 
       redirect "/users/#{@user.id}"
     else 
+      flash[:message] = "Make sure to fill in all the fields."
       redirect '/signup'
     end
   end
@@ -37,14 +40,14 @@ class UserController < ApplicationController
       session[:id] = user.id 
       redirect "/users/#{user.id}"
     else
-      redirect 'signup'
+      flash[:message] = "Invalid data. Sure you have an account?"
+      redirect '/login'
     end
   end
 
   get '/logout' do 
-    binding.pry
     if !session[:id].nil?
-      session.destroy
+      session.clear
     end
     redirect '/'
   end

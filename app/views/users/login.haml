@@ -1,5 +1,10 @@
 %h1 Log in to your account
 
+- if flash.has?(:message)
+  =flash[:message]
+%br
+%br
+
 %form{action: "/login", method: "post"}
   %label{for: "username"} Username:
   %input{type: "text", name: "user[username]"}

@@ -10,8 +10,13 @@ class PostController < ApplicationController
 
   post '/posts' do 
     user = User.find(session[:id])
-    post = Post.create(title: params[:post][:title], content: params[:post][:content], user_id: user.id)
-    redirect "#{user.username}/posts/#{post.id}"
+    post = Post.new(title: params[:post][:title], content: params[:post][:content], user_id: user.id)
+    if post.save
+      redirect "#{user.username}/posts/#{post.id}"
+    else 
+      flash[:message] = "Can't save it w/o a title and some content, brah."
+      redirect '/posts/new'
+    end
   end
 
   get '/:username/posts/:id' do 
@@ -39,8 +44,12 @@ class PostController < ApplicationController
 
   post '/:username/posts/:id'  do 
     post = Post.find(params[:id])
-    post.update(title: params[:post][:title], content: params[:post][:content])
-    redirect "#{params[:username]}/posts/#{post.id}"
+    if post.update(title: params[:post][:title], content: params[:post][:content])
+      redirect "#{params[:username]}/posts/#{post.id}"
+    else 
+      flash[:message] = "If you are going to make an edit, you have make sure both fields have content in them."
+      redirect "#{params[:username]}/posts/#{post.id}/edit"
+    end
   end
 
   post '/:username/posts/:id/delete' do 

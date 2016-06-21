@@ -1,5 +1,11 @@
 %h1 Write a New Blog Post
 
+- if flash.has?(:message)
+  =flash[:message]
+  
+%br
+%br
+
 %form{action: "/posts", method: "post"}
   %label{for: "title"} Title:
   %input{type: "text", name: "post[title]"}
