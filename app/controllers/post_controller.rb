@@ -1,4 +1,7 @@
+require 'rack-flash'  
+
 class PostController < ApplicationController
+  use Rack::Flash
 
   get '/posts/new' do 
     if session[:id]
@@ -71,9 +74,13 @@ class PostController < ApplicationController
 
   post '/:username/posts/:id/comment' do 
     user = User.find(session[:id])
-    @comment = Comment.create(content: params[:comment], user_id: user.id, post_id: params[:id] )
-    redirect "#{params[:username]}/posts/#{params[:id]}"
-    # binding.pry
+    if params[:comment].strip == ""
+       flash[:message] = "Looks like you tried to send a blank comment :/"
+       redirect "#{params[:username]}/posts/#{params[:id]}"
+    else
+      @comment = Comment.create(content: params[:comment], user_id: user.id, post_id: params[:id] )
+      redirect "#{params[:username]}/posts/#{params[:id]}"
+    end
 
   end
 
