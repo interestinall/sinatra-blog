@@ -1,6 +1,6 @@
 #Sinatra Blog 
 
-This is a bare bones blog for sinatra. It makes an excellent template for someone wanting a blank slate to practice css/sass on and is also a time saver for someone wanting to build out a more personalized sinatra blog without starting from zeroo.
+This is a bare bones blog for sinatra. It makes an excellent template for someone wanting a blank slate to practice css/sass on and is also a time saver for someone wanting to build out a more personalized sinatra blog without starting from zero.
 
 Features: user sign up, user log in, posts (CRUD) and comments (CR).
 
