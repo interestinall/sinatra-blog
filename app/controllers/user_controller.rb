@@ -24,7 +24,12 @@ class UserController < ApplicationController
 
   get '/users/:id' do
     @user = User.find(params[:id])
-    haml :'users/show'
+    if !@user.id.nil? && @user.id == session[:id]
+      haml :'users/show'
+    else
+      redirect '/'
+    end
+
   end
 
   get '/login' do
