@@ -29,7 +29,6 @@ class UserController < ApplicationController
     else
       redirect '/'
     end
-
   end
 
   get '/login' do
