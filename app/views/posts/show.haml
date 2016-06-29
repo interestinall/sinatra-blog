@@ -19,7 +19,7 @@
 %h4 Comments:
 
 - @post.comments.each do |c|
-  %label= c.user.username 
+  %label= c.user_name 
   %p= c.content
 
 - if flash.has?(:message)
